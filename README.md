@@ -86,6 +86,10 @@ Después abre `http://localhost:8000` en el navegador.
 | `Espacio` | Hard drop (caída instantánea)     |
 | `P`       | Pausar / reanudar                 |
 
+### Tema claro / oscuro
+
+El botón de la esquina superior derecha alterna entre modo oscuro (por defecto) y modo claro. La preferencia se guarda en `localStorage`.
+
 ---
 
 ## Cómo funciona
