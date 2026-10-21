@@ -85,7 +85,11 @@ Después abre `http://localhost:8000` en el navegador.
 | `↑` o `X` | Rotar la pieza en sentido horario |
 | `↓`       | Soft drop (bajar más rápido)      |
 | `Espacio` | Hard drop (caída instantánea)     |
-| `P`       | Pausar / reanudar                 |
+| `P` / `Esc` | Abrir / cerrar el menú de pausa |
+
+### Menú de pausa
+
+`P` o `Esc` abren un menú con: **Reanudar**, **Reiniciar** (nueva partida sin recargar), **Ver controles** y **Nivel inicial** (1–10, se aplica a la siguiente partida y se guarda en `localStorage` como `tetris-start-level`). Mientras está abierto, el juego ignora el resto de teclas. El nivel inicial es también el mínimo durante la partida.
 
 ### Tema claro / oscuro
 
