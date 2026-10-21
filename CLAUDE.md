@@ -15,7 +15,7 @@ Run: open `index.html` directly, or serve statically (`python -m http.server 800
 - `game.js` — all logic, single script with global mutable state (`board, current, next, score, lines, level, paused, gameOver, ...`) set in `init()`.
 
 Key points in `game.js`:
-- Board is `ROWS×COLS` matrix; cell = 0 or color/piece index 1–7 (indexes `COLORS` and `PIECES`, which must stay aligned; index 0 is `null`).
+- Board is `ROWS×COLS` matrix; cell = 0 or color/piece index 1–8 (indexes `COLORS` and `PIECES`, which must stay aligned; index 0 is `null`).
 - Pieces are square matrices; `rotateCW` = transpose + reverse. `tryRotate` kicks horizontally only (`[0,-1,1,-2,2]`), no SRS.
 - Flow: `loop` (rAF, accumulates `dropAccum` vs `dropInterval`) → `lockPiece` = `merge` → `clearLines` → `spawn`. `spawn` ends the game if the new piece collides.
 - `clearLines` owns scoring/level/`dropInterval` (`max(100, 1000-(level-1)*90)`); soft drop +1/row, hard drop +2/row are applied in `softDrop`/`hardDrop`.
