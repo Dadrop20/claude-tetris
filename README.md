@@ -91,6 +91,17 @@ Después abre `http://localhost:8000` en el navegador.
 
 El botón de la esquina superior derecha alterna entre modo oscuro (por defecto) y modo claro. La preferencia se guarda en `localStorage`.
 
+### Skins visuales
+
+El selector junto al botón de tema cambia el aspecto de los bloques y del tablero sin recargar (se guarda en `localStorage` como `tetris-skin`):
+
+- **Retro** (por defecto): bloques cuadrados de colores planos.
+- **Neon**: fondo negro y brillo con `shadowBlur`.
+- **Pastel**: colores suaves y esquinas redondeadas.
+- **Pixel art**: textura de sub-cuadros claros/oscuros en cada bloque.
+
+La skin controla el canvas (colores, fondo, rejilla); el tema controla el resto de la página.
+
 ---
 
 ## Cómo funciona
