@@ -47,6 +47,8 @@ const THEME_KEY = 'tetris-theme';
 let gridColor = '#22222e';
 
 let startLevel = 1;
+let gameStartLevel = 1;
+const intervalForLevel = lv => Math.max(100, 1000 - (lv - 1) * 90);
 let board, current, next, score, lines, level, paused, gameOver, lastTime, dropAccum, dropInterval, animId;
 
 function createBoard() {
@@ -113,8 +115,8 @@ function clearLines() {
   if (cleared) {
     lines += cleared;
     score += (LINE_SCORES[cleared] || 0) * level;
-    level = Math.max(startLevel, Math.floor(lines / 10) + 1);
-    dropInterval = Math.max(100, 1000 - (level - 1) * 90);
+    level = Math.max(gameStartLevel, Math.floor(lines / 10) + 1);
+    dropInterval = intervalForLevel(level);
     updateHUD();
   }
 }
@@ -291,6 +293,7 @@ startLevelSel.value = String(startLevel);
 
 function setPauseMenu(open) {
   pauseMenu.classList.toggle('hidden', !open);
+  if (!open && pauseMenu.contains(document.activeElement)) document.activeElement.blur();
   if (!open) {
     controlsList.classList.add('hidden');
     controlsBtn.setAttribute('aria-expanded', 'false');
@@ -314,10 +317,11 @@ function init() {
   board = createBoard();
   score = 0;
   lines = 0;
-  level = startLevel;
+  gameStartLevel = startLevel;
+  level = gameStartLevel;
   paused = false;
   gameOver = false;
-  dropInterval = Math.max(100, 1000 - (level - 1) * 90);
+  dropInterval = intervalForLevel(level);
   dropAccum = 0;
   lastTime = performance.now();
   next = randomPiece();
