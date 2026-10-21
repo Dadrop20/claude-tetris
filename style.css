@@ -217,3 +217,120 @@ kbd {
 #restart-btn:hover {
   background: var(--accent-hover);
 }
+
+/* ---- Records ---- */
+:root {
+  --hl-bg: rgba(122, 162, 247, 0.25);
+  --input-bg: #22223a;
+}
+
+[data-theme="light"] {
+  --hl-bg: rgba(59, 91, 219, 0.18);
+  --input-bg: #ffffff;
+}
+
+#start-screen {
+  background: var(--bg);
+  z-index: 2;
+}
+
+.start-title {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: 4px;
+  color: var(--accent);
+}
+
+.records-table {
+  border-collapse: collapse;
+  font-size: 12px;
+  color: var(--text);
+}
+
+.records-table th {
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--label);
+  text-align: left;
+  padding: 3px 6px;
+}
+
+.records-table td {
+  padding: 3px 6px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.records-table td.empty {
+  text-align: center;
+  color: var(--muted);
+}
+
+.records-table tr.highlight td {
+  background: var(--hl-bg);
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.records-stats {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+#overlay-records {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+#overlay-records.hidden,
+.name-form.hidden {
+  display: none;
+}
+
+.name-form {
+  display: flex;
+  gap: 6px;
+}
+
+#name-input {
+  background: var(--input-bg);
+  color: var(--text);
+  border: 1px solid var(--kbd-border);
+  border-radius: 4px;
+  padding: 6px 8px;
+  width: 140px;
+  font-size: 13px;
+  user-select: text;
+}
+
+#name-save-btn,
+#start-btn,
+.clear-records-btn {
+  background: var(--accent);
+  color: var(--btn-text);
+  border: none;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+#start-btn {
+  padding: 10px 28px;
+  font-size: 14px;
+}
+
+.clear-records-btn {
+  background: var(--kbd-bg);
+  color: var(--danger);
+  border: 1px solid var(--kbd-border);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+#name-save-btn:hover,
+#start-btn:hover {
+  background: var(--accent-hover);
+}

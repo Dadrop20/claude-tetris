@@ -91,6 +91,12 @@ Después abre `http://localhost:8000` en el navegador.
 
 El botón de la esquina superior derecha alterna entre modo oscuro (por defecto) y modo claro. La preferencia se guarda en `localStorage`.
 
+### Tabla de records
+
+Al abrir el juego aparece una pantalla de inicio con el **top 5** de puntuaciones, el **mejor combo** (locks consecutivos que limpian líneas) y el **máximo de líneas** en una partida. Se empieza con el botón **Jugar** o pulsando `Enter`.
+
+Al terminar la partida, si la puntuación entra en el top 5, se pide un nombre (máx. 12 caracteres; `Enter` o **Guardar**) y la fila nueva aparece resaltada. Los datos se guardan en `localStorage` (`tetris-records` y `tetris-stats`). El botón **Borrar records** (con confirmación) los elimina.
+
 ---
 
 ## Cómo funciona
