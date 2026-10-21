@@ -111,7 +111,7 @@ function clearLines() {
   }
   if (cleared) {
     combo++;
-    if (combo > maxCombo) maxCombo = combo;
+    if (combo >= 2 && combo > maxCombo) maxCombo = combo;
     lines += cleared;
     score += (LINE_SCORES[cleared] || 0) * level;
     level = Math.floor(lines / 10) + 1;
@@ -301,7 +301,7 @@ let pendingScore = null; // entrada pendiente de guardar al terminar la partida
 function loadRecords() {
   try {
     const data = JSON.parse(localStorage.getItem(RECORDS_KEY));
-    if (Array.isArray(data)) return data.slice(0, MAX_RECORDS);
+    if (Array.isArray(data)) return data.filter(r => r && typeof r === 'object' && Number.isFinite(r.score)).slice(0, MAX_RECORDS);
   } catch (e) {}
   return [];
 }
@@ -396,8 +396,6 @@ function submitName() {
 function clearRecords(btn) {
   if (!confirm('¿Borrar todos los records?')) { btn.blur(); return; }
   try { localStorage.removeItem(RECORDS_KEY); localStorage.removeItem(STATS_KEY); } catch (e) {}
-  pendingScore = null;
-  nameForm.classList.add('hidden');
   refreshStartScreen();
   renderTable(overlayTable, -1);
   btn.blur();
@@ -426,7 +424,7 @@ function init() {
   dropAccum = 0;
   combo = 0;
   maxCombo = 0;
-  pendingScore = null;
+  if (pendingScore) { nameInput.value = nameInput.value || ''; submitName(); }
   overlayRecords.classList.add('hidden');
   lastTime = performance.now();
   next = randomPiece();
